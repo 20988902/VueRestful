@@ -18,9 +18,13 @@ from django.contrib import admin
 from backend.settings import MEDIA_ROOT
 from django.views.static import serve
 
+from alipay import views
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^media/(?P<path>.*)$', serve, {"document_root": MEDIA_ROOT}),
     url(r'^api/(?P<version>\w+)/', include('api.urls')),
+
+    url(r'^index/', views.index),
 ]
